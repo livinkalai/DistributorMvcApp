@@ -38,3 +38,7 @@
     content: " *";
     color: red;
 }
+
+.btn-toolbar {
+    margin-top: 10px;
+}
