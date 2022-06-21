@@ -1,0 +1,54 @@
+﻿@using DistributorMvcApp.Models
+@{
+    ViewBag.Title = "Distributors App";
+}
+
+@model DistributorViewModel
+
+<link href="~/Content/distributor-dashboard.css" rel="stylesheet" />
+<script src="~/Scripts/distributor-dashboard.js"></script>
+<script type="text/javascript">
+    var dataModel = @Html.Raw(Json.Encode(@Model));
+</script>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><button onclick="onClickSave()">Save</button></li>
+    </ul>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" id="tblDistributor">
+    <thead>
+        <tr>
+            <th>
+                Distributors
+            </th>
+            @foreach (var item in Model.OrderStages)
+            {
+                <th>
+                    @item.Title
+                </th>
+            }
+        </tr>
+    </thead>
+    @foreach (var item in Model.Distributors)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            @foreach (var order in item.Orders)
+            {
+                {
+                    var className = order.Status == Status.Completed ? "completed" : order.Status == Status.InProgress ? "inprogress" : "open";
+                    <td>
+                        <input type="button" class="status-btn @className" onclick="showPopup(event, @item.Id, @order.Id)" />
+                    </td>
+                }
+            }
+        </tr>
+
+    }
+</table>
+
+@Html.Partial("_DialogTemplate")

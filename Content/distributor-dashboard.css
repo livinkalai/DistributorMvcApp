@@ -1,0 +1,40 @@
+﻿#tblDistributor td {
+    padding: 0px 2px;
+}
+
+#tblDistributor th {
+    width: 120px;
+}
+
+.status-btn {
+    background: grey;
+    width: 100%;
+}
+
+    .status-btn.open {
+        opacity: 0.5;
+    }
+
+    .status-btn.inprogress {
+        background: orange;
+    }
+
+    .status-btn.completed {
+        background: green;
+    }
+
+
+.modal-title {
+    width: 50%;
+    display: inline-block;
+}
+
+.modal-error {
+    color: #dd0e0e;
+    display: inline-block;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
